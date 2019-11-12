@@ -163,7 +163,7 @@ public class MyViewFlipper extends ViewFlipper implements View.OnTouchListener {
                             getCurrentView().setTranslationX((Float) valueAnimator.getAnimatedValue());
                             getOtherView().setTranslationX((Float) valueAnimator.getAnimatedValue()
                                     + (isNext ? flipper_width : -flipper_width));
-                            if(Math.abs((Double) valueAnimator.getAnimatedValue()) == flipper_width) {
+                            if(Math.abs((float) valueAnimator.getAnimatedValue()) == flipper_width) {
                                 //动画结束
                                 if(isNext) { //下一曲
                                     nextItem(mCurrentItem + 1);
