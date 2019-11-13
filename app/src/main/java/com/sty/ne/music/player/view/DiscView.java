@@ -495,7 +495,7 @@ public class DiscView extends RelativeLayout {
             otherPosterRes = mMusicData.get(next).getmMusicPicRes();
             myViewFlipper.getOtherPosterView().setImageDrawable(getDiscPosterDrawable(otherPosterRes));
         }
-        myViewFlipper.showNextWidthAnimation();;
+        myViewFlipper.showNextWidthAnimation();
         selectMusicWithButton();
     }
 
