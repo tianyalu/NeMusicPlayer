@@ -145,14 +145,14 @@ public class MyViewFlipper extends ViewFlipper implements View.OnTouchListener {
                 //提供接口回调
                 if(mOnPageChangeListener != null) {
                     mOnPageChangeListener.onPageScrolled(mCurrentItem, pageOffset, dx);
-                    mOnPageChangeListener.onPageScrollStateChangeed(SCROLL_STATE_DRAGGING);
+                    mOnPageChangeListener.onPageScrollStateChanged(SCROLL_STATE_DRAGGING);
                 }
                 break;
             case MotionEvent.ACTION_UP:
                 //回弹处理 动画
                 final boolean isNext = dx < 0;
                 if(mOnPageChangeListener != null) {
-                    mOnPageChangeListener.onPageScrollStateChangeed(SCROLL_STATE_SETTLING);
+                    mOnPageChangeListener.onPageScrollStateChanged(SCROLL_STATE_SETTLING);
                 }
                 if(pageOffset > 0.5) {
                     //切歌
@@ -174,7 +174,7 @@ public class MyViewFlipper extends ViewFlipper implements View.OnTouchListener {
                                 }
                                 if(mOnPageChangeListener != null) {
                                     mOnPageChangeListener.onPageSelected(mCurrentItem, isNext);
-                                    mOnPageChangeListener.onPageScrollStateChangeed(SCROLL_STATE_IDEL);
+                                    mOnPageChangeListener.onPageScrollStateChanged(SCROLL_STATE_IDEL);
                                 }
                             }
                         }
@@ -191,7 +191,7 @@ public class MyViewFlipper extends ViewFlipper implements View.OnTouchListener {
                                 + (isNext ? flipper_width : -flipper_width));
                             if((Float)valueAnimator.getAnimatedValue() == 0) {
                                 if(mOnPageChangeListener != null) {
-                                    mOnPageChangeListener.onPageScrollStateChangeed(SCROLL_STATE_IDEL);
+                                    mOnPageChangeListener.onPageScrollStateChanged(SCROLL_STATE_IDEL);
                                 }
                             }
                         }
@@ -219,7 +219,7 @@ public class MyViewFlipper extends ViewFlipper implements View.OnTouchListener {
                     showPrevious();
                     if(mOnPageChangeListener != null) {
                         mOnPageChangeListener.onPageSelected(mCurrentItem, false);
-                        mOnPageChangeListener.onPageScrollStateChangeed(SCROLL_STATE_IDEL);
+                        mOnPageChangeListener.onPageScrollStateChanged(SCROLL_STATE_IDEL);
                     }
                 }
             }
@@ -241,11 +241,12 @@ public class MyViewFlipper extends ViewFlipper implements View.OnTouchListener {
                     showNext();
                     if(mOnPageChangeListener != null) {
                         mOnPageChangeListener.onPageSelected(mCurrentItem, true);
-                        mOnPageChangeListener.onPageScrollStateChangeed(SCROLL_STATE_IDEL);
+                        mOnPageChangeListener.onPageScrollStateChanged(SCROLL_STATE_IDEL);
                     }
                 }
             }
         });
+        animator.start();
     }
 
     public void setOnPageChangeListener(OnPageChangeListener listener) {
@@ -257,7 +258,7 @@ public class MyViewFlipper extends ViewFlipper implements View.OnTouchListener {
 
         void onPageSelected(int position, boolean isNext);
 
-        void onPageScrollStateChangeed(int state);
+        void onPageScrollStateChanged(int state);
     }
 
 

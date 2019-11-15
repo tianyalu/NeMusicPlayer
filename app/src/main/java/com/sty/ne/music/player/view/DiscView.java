@@ -254,7 +254,7 @@ public class DiscView extends RelativeLayout {
             }
 
             @Override
-            public void onPageScrollStateChangeed(int state) {
+            public void onPageScrollStateChanged(int state) {
                 doWithAnimatorOnPageScroll(state);
             }
         });
