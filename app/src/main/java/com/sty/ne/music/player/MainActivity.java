@@ -305,6 +305,8 @@ public class MainActivity extends AppCompatActivity implements DiscView.IPlayInf
         }
 
         options.inJustDecodeBounds = false;
+        //采样率。采样率为1时即原始大小，为2时，宽高均为原来的1/2，像素数和占用内存数均为原来的1/4.
+        // 采样率一般是2的指数，即1、2、4、8、16…… 通过采用率来缩小图片以减少内存占用（使图像长边可以占满屏幕）
         options.inSampleSize = sample;
         options.inPreferredConfig = Bitmap.Config.RGB_565;
 

@@ -30,6 +30,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 组合控件：ImageView,ViewFlipper,ImageView
+ */
 public class DiscView extends RelativeLayout {
     private ImageView mIvNeedle;
     private MyViewFlipper myViewFlipper;
@@ -136,6 +139,7 @@ public class DiscView extends RelativeLayout {
         ViewCalculateUtil.setViewRelativeLayoutParam(mIvNeedle, UIUtils.NEEDLE_WIDTH, UIUtils.NEEDLE_HEIGHT,
                 -UIUtils.NEEDLE_MARGIN_TOP, 0, UIUtils.NEEDLE_MARGIN_LEFT,
                 0, false);
+        //唱针图片旋转中心
         int pivotX = UIUtils.getInstance().getWidth(UIUtils.NEEDLE_PIVOT_X);
         int pivotY = UIUtils.getInstance().getHeight(UIUtils.NEEDLE_PIVOT_Y);
 
@@ -211,7 +215,7 @@ public class DiscView extends RelativeLayout {
         myViewFlipper.setOnPageChangeListener(new MyViewFlipper.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, float positionOffsetPixels) {
-                Log.i("滑动", "" + positionOffsetPixels);
+//                Log.i("滑动", "" + positionOffsetPixels);
                 if(positionOffsetPixels > 0) {
                     //上一曲
                     int previous = myViewFlipper.getPreviousItem();
@@ -293,7 +297,7 @@ public class DiscView extends RelativeLayout {
                 width, width, marginTop, 0, 0, 0);
     }
 
-    //得到唱盘背后透明的圆形背景
+    //得到唱盘背后透明的圆形偏白背景
     public Drawable getDiscBlackGroundDrawable() {
         int discSize = UIUtils.getInstance().getWidth(UIUtils.DISC_BG_WIDTH);
         Bitmap bitmapDisc = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),
@@ -409,7 +413,7 @@ public class DiscView extends RelativeLayout {
 
     //暂停动画
     private void pauseAnimator() {
-        //播放是暂停动画
+        //播放时暂停动画
         if(needleAnimatorStatus == NeedleAnimatorStatus.IN_NEAR_END) {
             pauseDiscAnimator();
             //唱针往唱盘移动时暂停动画
